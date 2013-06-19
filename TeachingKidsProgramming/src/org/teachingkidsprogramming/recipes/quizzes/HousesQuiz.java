@@ -43,18 +43,33 @@ public class HousesQuiz extends org.teachingkidsprogramming.recipes.quizzes.grad
   {
     // TODO Auto-generated method stub
     super.moveTheLength();
-    Tortoise.move(21);
+    Tortoise.move(length);
   }
   //
   //
   //      Question5
   //      Create a method called turnTheCorner
   //       that turns the Tortoise 1/3 of 360 degrees to the left
+  @Override
+  public void turnTheCorner()
+  {
+    // TODO Auto-generated method stub
+    super.turnTheCorner();
+    Tortoise.turn(360 / -3);
+  }
   //
   //
   //      Question6
   //      Create a method called drawASide
   //       that calls moveTheLength and turnTheCorner 
+  @Override
+  public void drawASide()
+  {
+    // TODO Auto-generated method stub
+    super.drawASide();
+    moveTheLength();
+    turnTheCorner();
+  }
   //
   public static void main(String[] args)
   {
