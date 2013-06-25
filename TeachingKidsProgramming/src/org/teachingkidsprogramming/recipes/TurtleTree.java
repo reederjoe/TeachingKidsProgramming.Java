@@ -3,13 +3,17 @@ package org.teachingkidsprogramming.recipes;
 import org.teachingextensions.logo.Colors;
 import org.teachingextensions.logo.Turtle;
 
+import com.spun.util.NumberUtils;
+
 public class TurtleTree
 {
   public static void main(String[] args)
   {
     Turtle turtle = new Turtle();
+    // lower the y-coordinate by 100
+    turtle.setY(200);
+    turtle.hide();
     turtle.setSpeed(10);
-    //    Turn the background black --#22
     turtle.getBackgroundWindow().setBackground(Colors.Grays.Black);
     int length = 60;
     drawBranch(turtle, length);
@@ -29,40 +33,46 @@ public class TurtleTree
     {
       turtle.setPenColor(Colors.Greens.Lime);
     }
-    if (length == 20)
+    else if (length <= 20)
     {
       turtle.setPenColor(Colors.Greens.ForestGreen);
     }
-    if (length == 30)
+    else if (length <= 30)
     {
+      turtle.setPenWidth(5);
       turtle.setPenColor(Colors.Greens.DarkGreen);
     }
-    if (length == 40)
+    else if (length <= 40)
     {
+      turtle.setPenWidth(18);
       turtle.setPenColor(Colors.Greens.Olive);
     }
-    if (length == 50)
+    else if (length <= 50)
     {
+      turtle.setPenWidth(14);
       turtle.setPenColor(Colors.Browns.Sienna);
     }
-    if (length == 60)
+    else if (length <= 60)
     {
+      turtle.setPenWidth(20);
       turtle.setPenColor(Colors.Browns.SaddleBrown);
     }
   }
   private static void drawLowerBranches(Turtle turtle, int length)
   {
-    turtle.turn(30);
+    int rightAngle = NumberUtils.getRandomInt(20, 40);
+    turtle.turn(rightAngle);
     drawShorterBranch(turtle, length);
-    turtle.turn(-60);
+    int leftAngle = NumberUtils.getRandomInt(10, 60);
+    turtle.turn(leftAngle - rightAngle);
     drawShorterBranch(turtle, length);
-    turtle.turn(30);
-    //            adjustColor --#17
+    turtle.turn(-leftAngle);
     adjustColor(turtle, length);
     turtle.move(-length);
   }
   private static void drawShorterBranch(Turtle turtle, int length)
   {
-    drawBranch(turtle, length - 10);
+    int difference = 10;
+    drawBranch(turtle, length - difference);
   }
 }
